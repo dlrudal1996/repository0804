@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd" >
+							
+				<!-- 자바파일이 아니라 import를 못시키므로 패키지명부터 다 적어줘야한다. -->
+		<bean id="gr" class="sp4.sp4_test01.Greeter">	
+				<!-- Greeter의 format에 value값을 넣는다. -->
+			<property name="format" value="%s, 하이!"></property>
+		</bean>		
+		<bean id="gr2" class="sp4.sp4_test01.Greeter">	
+				<!-- Greeter의 format에 value값을 넣는다. -->
+			<property name="format" value="%s, 하이!"></property>
+		</bean>		
+
+
+</beans>
