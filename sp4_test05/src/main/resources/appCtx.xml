@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Assembler 대신에 xml을 이용해 객체 조립기 생성 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=
+				"http://www.springframework.org/schema/beans 
+				http://www.springframework.org/schema/beans/spring-beans.xsd ">
+				
+	<bean id="memberDao" class="Main.DTO.MemberDao" />
+	<bean id="printer" class="Main.service.MemberPrinter" />
+	<bean id="memberRegisterService" class="Main.service.MemberRegisterService" >
+		<!-- 생성자를 통해 의존객체를 주입받을 떄는 constructor-->
+		<!-- this가 name this는 객체를 받아야함 -->
+		<constructor-arg name="memberDao" ref="memberDao" />
+	</bean>
+
+	<bean id="memberListPrinter" class="Main.service.MemberListPrinter" >
+		<constructor-arg name="memberDao" ref="memberDao" />
+		<constructor-arg name="printer" ref="printer" />
+	</bean>
+
+	<bean id="changePasswordService" class="Main.service.ChangePasswordService" >
+		<!-- setter를 통해 의존객체를 주입받을 떄는  proporty -->
+		<property name="memberDao" ref="memberDao" />
+	</bean>
+
+	<bean id="memberInfoPrinter" class="Main.service.MemberInfoPrinter" >
+		<property name="memberDao" ref="memberDao" />
+		<property name="printer" ref="printer" />
+	</bean>
+	
+</beans>
