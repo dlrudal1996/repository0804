@@ -3,6 +3,8 @@ package Main;
 import java.util.Scanner;
 
 import Main.DTO.RegisterRequest;
+import Main.service.ChangePasswordService;
+import Main.service.MemberInfoPrinter;
 import Main.service.MemberListPrinter;
 import Main.service.MemberRegisterService;
 
@@ -36,14 +38,24 @@ public class App {
 				MemberRegisterService mrs = new MemberRegisterService();
 				mrs.regist(req);
 			} else if (command.startsWith("change")) {
-
-			} else if (command.equals("list")) {
+				String [] arg = command.split(" ");
+				if(arg.length != 4) {					printHelp();
+					continue;
+				}
+				ChangePasswordService changePwSvc = new ChangePasswordService();
+				changePwSvc.changePassword(arg[1],arg[2],arg[3]);
 				//의존객체 dependency object
 				MemberListPrinter listPrint = new MemberListPrinter();
 				listPrint.printAll();
 				
 			} else if (command.startsWith("info")) {
-
+				String [] arg = command.split(" ");
+				if(arg.length != 2) {
+					printHelp();
+					continue;
+				}
+				MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
+				infoPrinter.printMemberInfo(arg[1]);
 			} else if (command.startsWith("exit")) {
 				System.out.println("프로그램이 종료되었습니다.");
 				System.exit(0);

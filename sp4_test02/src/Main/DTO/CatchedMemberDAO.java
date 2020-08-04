@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemberDao {
+public class CatchedMemberDAO {
 	private static long nextId = 0;
 	//hashmap은 map을 상속받고 있음
 	private static Map<String, MemberDTO> map = new HashMap<String, MemberDTO>();
@@ -25,5 +25,4 @@ public class MemberDao {
 		map.put(dto.getEmail(), dto);
 		
 	}
-	
 }

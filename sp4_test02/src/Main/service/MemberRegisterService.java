@@ -15,6 +15,7 @@ public class MemberRegisterService {
 //		MemberDTO dto = new MemberDTO();		//req에 값을 받아 dto에 저장
 		MemberDTO dto = memberDao.selectByEmail(req.getEmail());
 		if (dto == null) {
+			dto = new MemberDTO();
 			dto.setEmail(req.getEmail());
 			dto.setName(req.getName());
 			dto.setPassword(req.getPassword());
